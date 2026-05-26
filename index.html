@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ── Primary SEO ── -->
+  <title>Tiếng Nhật Muôn Màu – Kiến Thức IT Cho IT Comtor & BrSE</title>
+  <meta name="description" content="Chia sẻ kiến thức IT thực tế cho IT Comtor, BrSE và PM trong dự án Nhật — từ IT Basics, AWS/Infra, Dev Flow đến hành trình Comtor → BrSE → PM.">
+  <meta name="keywords" content="IT Comtor, BrSE, Bridge SE, tiếng Nhật IT, kiến thức IT cho comtor, AWS cơ bản, dev flow, system architecture, dự án IT Nhật">
+  <meta name="author" content="Tiếng Nhật Muôn Màu">
+  <link rel="me" href="https://www.facebook.com/tiengnhatmuonmau">
+  <link rel="me" href="https://www.youtube.com/@tiengnhatmuonmautiengnhati623">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tiengnhatmuonmau.com/">
+
+  <!-- ── Open Graph (Facebook, Zalo, LinkedIn) ── -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tiengnhatmuonmau.com/">
+  <meta property="og:title" content="Tiếng Nhật Muôn Màu – Kiến Thức IT Cho IT Comtor & BrSE">
+  <meta property="og:description" content="Hệ thống hóa kiến thức IT từ góc nhìn thực tế — dành cho người đang đi con đường Comtor → BrSE → PM trong môi trường dự án IT Nhật.">
+  <meta property="og:image" content="https://tiengnhatmuonmau.com/images/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:site_name" content="Tiếng Nhật Muôn Màu">
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tiếng Nhật Muôn Màu – Kiến Thức IT Cho IT Comtor & BrSE">
+  <meta name="twitter:description" content="Hệ thống hóa kiến thức IT từ góc nhìn thực tế — dành cho người đang đi con đường Comtor → BrSE → PM.">
+  <meta name="twitter:image" content="https://tiengnhatmuonmau.com/images/og-cover.png">
+
+  <!-- ── Structured Data (JSON-LD) ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Tiếng Nhật Muôn Màu",
+    "url": "https://tiengnhatmuonmau.com/",
+    "description": "Chia sẻ kiến thức IT thực tế cho IT Comtor, BrSE và PM trong dự án Nhật",
+    "inLanguage": "vi",
+    "publisher": {
+      "@type": "Person",
+      "name": "Tiếng Nhật Muôn Màu"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tiengnhatmuonmau.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- ── Favicon (thay bằng file thực tế) ── -->
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="apple-touch-icon" href="images/logo.png">
+
+  <!-- ── Fonts ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── RESET ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── TOKENS ─────────────────────────────────── */
+    :root {
+      --bg:          #FFFFFF;
+      --bg-alt:      #F8FAFC;
+      --bg-dark:     #0D1117;
+      --bg-dark2:    #161B22;
+
+      --ink:         #0F172A;
+      --ink-2:       #475569;
+      --ink-3:       #94A3B8;
+      --ink-light:   #CBD5E1;
+
+      --blue:        #2563EB;
+      --blue-l:      #EFF6FF;
+      --violet:      #7C3AED;
+      --violet-l:    #F5F3FF;
+      --pink:        #EC4899;
+      --teal:        #0EA5E9;
+      --green:       #10B981;
+      --amber:       #F59E0B;
+
+      --grad:        linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+      --grad-soft:   linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%);
+
+      --border:      #E2E8F0;
+      --border-dark: rgba(255,255,255,0.08);
+
+      --sh-sm:  0 1px 4px rgba(0,0,0,0.06);
+      --sh-md:  0 4px 20px rgba(0,0,0,0.08);
+      --sh-lg:  0 16px 48px rgba(0,0,0,0.12);
+      --sh-xl:  0 32px 80px rgba(37,99,235,0.15);
+
+      --r:    12px;
+      --r-lg: 20px;
+      --r-xl: 28px;
+
+      --max: 1160px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { text-decoration: none; color: inherit; }
+    ul  { list-style: none; }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ─── TYPOGRAPHY HELPERS ─────────────────────── */
+    .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: var(--blue-l);
+      padding: .3rem .75rem;
+      border-radius: 999px;
+    }
+    .tag.violet { color: var(--violet); background: var(--violet-l); }
+
+    /* ─── BUTTONS ────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: inherit;
+      font-size: .9375rem;
+      font-weight: 600;
+      padding: .75rem 1.625rem;
+      border-radius: var(--r);
+      border: none;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .btn-primary {
+      background: var(--grad);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(37,99,235,.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,.45); }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-l); }
+    .btn-ghost {
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,.2);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.2); }
+
+    /* ─── IMAGE PLACEHOLDER ──────────────────────── */
+    .img-ph {
+      width: 100%;
+      border-radius: var(--r-lg);
+      background: linear-gradient(135deg, #EEF2FF 0%, #F0FDF4 100%);
+      border: 2px dashed #C7D2FE;
+      overflow: hidden;
+      position: relative;
+    }
+    .img-ph::before {
+      content: '';
+      display: block;
+      padding-top: 130%; /* portrait default */
+    }
+    .img-ph.landscape::before { padding-top: 70%; }
+    .img-ph.square::before    { padding-top: 100%; }
+
+    .img-ph-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      gap: .6rem;
+    }
+    .img-ph-icon {
+      width: 48px; height: 48px;
+      background: var(--grad);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    .img-ph-label {
+      font-size: .8125rem;
+      font-weight: 700;
+      color: var(--violet);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .img-ph-prompt {
+      font-size: .75rem;
+      color: var(--ink-2);
+      line-height: 1.5;
+      max-width: 280px;
+    }
+    .img-ph-prompt strong { color: var(--ink); }
+
+    /* ─── NAV ────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 1.5rem;
+      background: rgba(255,255,255,.88);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226,232,240,.6);
+      transition: box-shadow .3s;
+    }
+    .nav.scrolled { box-shadow: var(--sh-md); }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      font-weight: 800;
+      font-size: 1.125rem;
+      letter-spacing: -.02em;
+    }
+    .logo-icon {
+      width: 34px; height: 34px;
+      background: var(--grad);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: .95rem;
+    }
+    .logo span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+    }
+    .nav-links a {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--ink-2);
+      padding: .5rem .875rem;
+      border-radius: 8px;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--blue); background: var(--blue-l); }
+
+    /* dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle {
+      display: flex; align-items: center; gap: .25rem;
+    }
+    .nav-dropdown-toggle::after {
+      content: '▾';
+      font-size: .65rem;
+      transition: transform .2s;
+    }
+    .nav-dropdown:hover .nav-dropdown-toggle::after { transform: rotate(180deg); }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + .5rem);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      box-shadow: var(--sh-lg);
+      min-width: 180px;
+      padding: .5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all .2s;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .nav-dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      font-size: .875rem;
+      color: var(--ink-2) !important;
+      padding: .5rem .75rem !important;
+      border-radius: 8px;
+      background: transparent !important;
+    }
+    .nav-dropdown-menu a:hover { color: var(--blue) !important; background: var(--blue-l) !important; }
+    .nav-dropdown-menu .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--grad);
+      flex-shrink: 0;
+    }
+
+    .nav-cta { margin-left: .5rem; }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .5rem;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all .25s;
+    }
+
+    /* ─── HERO ───────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(124,58,237,.06) 0%, transparent 60%),
+                  radial-gradient(ellipse 60% 50% at 20% 70%, rgba(37,99,235,.05) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37,99,235,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      margin-bottom: 1.25rem;
+    }
+    .hero-path {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--ink-2);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .35rem 1rem .35rem .5rem;
+    }
+    .hero-path-step {
+      font-size: .7rem;
+      font-weight: 700;
+      padding: .2rem .55rem;
+      border-radius: 999px;
+      letter-spacing: .04em;
+    }
+    .hero-path-step.s1 { background: var(--blue-l);   color: var(--blue); }
+    .hero-path-step.s2 { background: var(--violet-l); color: var(--violet); }
+    .hero-path-step.s3 { background: #FFF7ED; color: #C2410C; }
+    .hero-arrow { color: var(--ink-3); font-size: .7rem; }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-desc {
+      font-size: 1.0625rem;
+      color: var(--ink-2);
+      max-width: 520px;
+      margin-bottom: 2.25rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .875rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+    }
+    .stat-item { }
+    .stat-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: .8rem; color: var(--ink-3); font-weight: 500; margin-top: .1rem; }
+
+    .hero-img-wrap {
+      position: relative;
+    }
+    .hero-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      background: var(--grad);
+      border-radius: calc(var(--r-xl) + 16px);
+      opacity: .08;
+      filter: blur(24px);
+    }
+    .hero-img-wrap .img-ph {
+      position: relative;
+      box-shadow: var(--sh-xl);
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: -1.5rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: .75rem 1rem;
+      box-shadow: var(--sh-lg);
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--ink);
+      white-space: nowrap;
+      animation: float 3s ease-in-out infinite;
+    }
+    .hero-badge-icon { font-size: 1.125rem; }
+    .hero-badge-sub { font-size: .7rem; color: var(--ink-3); font-weight: 400; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+
+    /* ─── PAIN POINTS ────────────────────────────── */
+    .pain {
+      background: var(--bg-dark);
+      padding: 96px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .pain::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(124,58,237,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pain::after {
+      content: '';
+      position: absolute;
+      bottom: -50%; left: -20%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(37,99,235,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .pain .container { position: relative; z-index: 1; }
+
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header h2 {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.2;
+      margin-top: .75rem;
+      margin-bottom: 1rem;
+    }
+    .section-header p {
+      font-size: 1.0625rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .pain .section-header h2 { color: #fff; }
+    .pain .section-header p  { color: var(--ink-light); }
+    .pain .tag { background: rgba(37,99,235,.2); color: #93C5FD; }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .pain-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--r-lg);
+      padding: 1.75rem;
+      display: flex;
+      gap: 1.25rem;
+      transition: all .25s;
+    }
+    .pain-card:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(124,58,237,.4);
+      transform: translateY(-3px);
+    }
+    .pain-card-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.375rem;
+      flex-shrink: 0;
+    }
+    .pain-card-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: .375rem;
+      line-height: 1.4;
+    }
+    .pain-card-body p {
+      font-size: .875rem;
+      color: var(--ink-3);
+      line-height: 1.6;
+    }
+
+    .pain-footer {
+      margin-top: 3rem;
+      text-align: center;
+      padding: 1.75rem;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--r-lg);
+      background: rgba(255,255,255,.03);
+    }
+    .pain-footer p {
+      color: var(--ink-light);
+      font-size: 1rem;
+    }
+    .pain-footer strong { color: #fff; }
+
+    /* ─── STORY ──────────────────────────────────── */
+    .story {
+      padding: 96px 0;
+      background: var(--bg-alt);
+    }
+    .story .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .story-img-wrap { position: relative; }
+    .story-img-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 70%;
+      height: 70%;
+      border-radius: var(--r-lg);
+      background: var(--grad-soft);
+      z-index: -1;
+    }
+
+    .story-content .tag { margin-bottom: 1.25rem; }
+
+    .story-content h2 {
+      font-size: clamp(1.75rem, 3vw, 2.375rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .story-content > p {
+      font-size: 1rem;
+      color: var(--ink-2);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .journey-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .journey-step {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding-bottom: 1.5rem;
+      position: relative;
+    }
+    .journey-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), var(--violet));
+      opacity: .2;
+    }
+    .journey-dot {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8125rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      color: #fff;
+    }
+    .journey-dot.d1 { background: var(--blue); }
+    .journey-dot.d2 { background: var(--violet); }
+    .journey-dot.d3 { background: linear-gradient(135deg, #F59E0B, #EC4899); }
+
+    .journey-step-body h4 {
+      font-size: .9375rem;
+      font-weight: 700;
+      margin-bottom: .25rem;
+      padding-top: .5rem;
+    }
+    .journey-step-body p {
+      font-size: .875rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+
+    .story-quote {
+      margin-top: 1.75rem;
+      padding: 1.25rem 1.5rem;
+      border-left: 3px solid;
+      border-image: var(--grad) 1;
+      background: var(--bg);
+      border-radius: 0 var(--r) var(--r) 0;
+      font-style: italic;
+      color: var(--ink-2);
+      font-size: .9375rem;
+      line-height: 1.7;
+    }
+
+    /* ─── CONTENT AREAS ──────────────────────────── */
+    .areas { padding: 96px 0; }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 3.5rem;
+    }
+    .areas-grid .area-card:nth-child(4),
+    .areas-grid .area-card:nth-child(5) {
+      /* center the last two */
+    }
+
+    .area-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.75rem;
+      transition: all .25s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .area-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grad);
+      opacity: 0;
+      transition: opacity .25s;
+    }
+    .area-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); border-color: transparent; }
+    .area-card:hover::before { opacity: .03; }
+
+    .area-card-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--r);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.125rem;
+    }
+    .area-card h3 {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .area-card p {
+      font-size: .875rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+    .area-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      margin-top: 1rem;
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--blue);
+    }
+    .area-card-link::after { content: '→'; transition: transform .2s; }
+    .area-card:hover .area-card-link::after { transform: translateX(4px); }
+
+    /* 5-card center layout */
+    .areas-grid-wrap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .areas-row2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      max-width: calc((100% - 1.25rem) * 2/3 + 1.25rem);
+      /* center the 2-card row */
+      margin: 1.25rem auto 0;
+    }
+
+    /* ─── LATEST POSTS ───────────────────────────── */
+    .posts { padding: 96px 0; background: var(--bg-alt); }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .post-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: all .25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .post-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); border-color: transparent; }
+
+    .post-card-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--grad-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .post-card-thumb-label {
+      position: absolute;
+      bottom: .75rem; left: .75rem;
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: .25rem .625rem;
+      border-radius: 999px;
+      color: #fff;
+    }
+
+    .post-card-body { padding: 1.375rem; flex: 1; display: flex; flex-direction: column; }
+    .post-card-meta {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .75rem;
+      color: var(--ink-3);
+      margin-bottom: .75rem;
+    }
+    .post-card-meta span { display: flex; align-items: center; gap: .25rem; }
+    .post-card-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.45;
+      margin-bottom: .625rem;
+    }
+    .post-card-body p {
+      font-size: .875rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .post-card-footer {
+      margin-top: 1.125rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .post-read-more {
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+      transition: gap .2s;
+    }
+    .post-card:hover .post-read-more { gap: .5rem; }
+    .post-read-more::after { content: '→'; }
+    .post-time { font-size: .75rem; color: var(--ink-3); }
+
+    .posts-cta { text-align: center; margin-top: 2.5rem; }
+
+    /* ─── EBOOK CTA ──────────────────────────────── */
+    .ebook {
+      padding: 96px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .ebook-banner {
+      background: var(--bg-dark);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      align-items: center;
+      position: relative;
+    }
+    .ebook-banner::before {
+      content: '';
+      position: absolute;
+      top: -60%; right: 30%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(124,58,237,.25) 0%, transparent 70%);
+    }
+
+    .ebook-content {
+      padding: 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .ebook-content .tag { background: rgba(124,58,237,.2); color: #C4B5FD; margin-bottom: 1.25rem; }
+
+    .ebook-content h2 {
+      font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .ebook-content p {
+      color: var(--ink-light);
+      margin-bottom: 1.75rem;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .ebook-features {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-bottom: 2rem;
+    }
+    .ebook-feature {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      font-size: .9rem;
+      color: var(--ink-light);
+    }
+    .ebook-feature-icon { color: var(--green); font-size: .85rem; }
+
+    .ebook-actions { display: flex; gap: .875rem; flex-wrap: wrap; }
+
+    .ebook-img {
+      height: 100%;
+      min-height: 400px;
+      position: relative;
+    }
+    .ebook-img .img-ph {
+      height: 100%;
+      border-radius: 0;
+    }
+    .ebook-img .img-ph::before { padding-top: 0; }
+    .ebook-img .img-ph-inner { position: relative; height: 100%; min-height: 400px; }
+
+    /* ─── NEWSLETTER ─────────────────────────────── */
+    .newsletter {
+      padding: 64px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .newsletter h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      margin-bottom: .625rem;
+    }
+    .newsletter p { color: var(--ink-2); margin-bottom: 1.5rem; }
+
+    .newsletter-form {
+      display: flex;
+      gap: .75rem;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: .75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      font-family: inherit;
+      font-size: .9375rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .newsletter-form input:focus { border-color: var(--blue); }
+    .newsletter-form input::placeholder { color: var(--ink-3); }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      background: var(--bg-dark);
+      color: var(--ink-light);
+      padding: 56px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .footer-brand .logo { margin-bottom: .875rem; }
+    .footer-brand .logo-icon { background: rgba(255,255,255,.1); }
+    .footer-brand .logo span {
+      -webkit-text-fill-color: #fff;
+      color: #fff;
+    }
+    .footer-brand p {
+      font-size: .875rem;
+      color: var(--ink-3);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-social { display: flex; gap: .625rem; }
+    .footer-social a {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border-dark);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .875rem;
+      transition: all .2s;
+    }
+    .footer-social a:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); }
+
+    .footer-col h4 {
+      font-size: .875rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: .5rem; }
+    .footer-col ul a {
+      font-size: .875rem;
+      color: var(--ink-3);
+      transition: color .15s;
+    }
+    .footer-col ul a:hover { color: #fff; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+      font-size: .8rem;
+      color: var(--ink-3);
+    }
+
+    /* ─── SCROLL ANIMATIONS ──────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.delay-1 { transition-delay: .1s; }
+    .fade-up.delay-2 { transition-delay: .2s; }
+    .fade-up.delay-3 { transition-delay: .3s; }
+    .fade-up.delay-4 { transition-delay: .4s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 960px) {
+      .hero .container    { grid-template-columns: 1fr; }
+      .hero-img-wrap      { max-width: 360px; margin: 0 auto; }
+      .story .container   { grid-template-columns: 1fr; }
+      .story-img-wrap     { max-width: 420px; margin: 0 auto; order: -1; }
+      .areas-grid-wrap    { grid-template-columns: repeat(2, 1fr); }
+      .areas-row2         { max-width: 100%; grid-template-columns: repeat(2, 1fr); }
+      .posts-grid         { grid-template-columns: 1fr 1fr; }
+      .ebook-banner       { grid-template-columns: 1fr; }
+      .ebook-img          { min-height: 280px; }
+      .footer-grid        { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .pain-grid          { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger       { display: flex; }
+      .hero                { padding: 80px 0 60px; }
+      .hero-stats          { gap: 1.5rem; }
+      .areas-grid-wrap     { grid-template-columns: 1fr; }
+      .areas-row2          { grid-template-columns: 1fr; }
+      .posts-grid          { grid-template-columns: 1fr; }
+      .footer-grid         { grid-template-columns: 1fr; gap: 1.5rem; }
+      .footer-bottom       { flex-direction: column; gap: .5rem; text-align: center; }
+      .newsletter-form     { flex-direction: column; }
+      .ebook-content       { padding: 2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <img src="images/logo.png" alt="Tiếng Nhật Muôn Màu" style="height:36px;width:auto;display:block;">
+      <span>Tiếng Nhật Muôn Màu</span>
+    </a>
+
+    <!-- Links -->
+    <nav class="nav-links">
+      <a href="/">Trang chủ</a>
+
+      <div class="nav-dropdown">
+        <a href="/blog" class="nav-dropdown-toggle">Blog</a>
+        <div class="nav-dropdown-menu">
+          <a href="/blog/it-basics"><span class="dot"></span>IT Basics</a>
+          <a href="/blog/aws-infra"><span class="dot"></span>AWS / Infra</a>
+          <a href="/blog/dev-flow"><span class="dot"></span>Dev Flow</a>
+          <a href="/blog/brse-skill"><span class="dot"></span>BrSE Skill</a>
+          <a href="/blog/case-study"><span class="dot"></span>Case Study</a>
+        </div>
+      </div>
+
+      <a href="/ebook">Ebook</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <a href="/ebook" class="btn btn-primary nav-cta" style="font-size:.85rem;padding:.6rem 1.25rem;">
+      📥 Tải Ebook miễn phí
+    </a>
+
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="container">
+
+    <!-- Left content -->
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <div class="hero-path">
+          <span class="hero-path-step s1">IT Comtor</span>
+          <span class="hero-arrow">›</span>
+          <span class="hero-path-step s2">BrSE</span>
+          <span class="hero-arrow">›</span>
+          <span class="hero-path-step s3">PM</span>
+          &nbsp;— Hành trình thực tế
+        </div>
+      </div>
+
+      <h1>
+        Hiểu hệ thống.<br>
+        Tự tin giao tiếp với<br>
+        <span class="grad-text">dev team.</span>
+      </h1>
+
+      <p class="hero-desc">
+        Kiến thức IT dành riêng cho người không xuất phát từ technical background —
+        được hệ thống hóa từ hành trình thực tế của người đã đi qua Comtor, BrSE đến PM
+        trong môi trường dự án IT Nhật.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/blog" class="btn btn-primary">
+          📖 Khám phá Blog
+        </a>
+        <a href="/ebook" class="btn btn-outline">
+          📥 Tải Ebook miễn phí
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Bài viết</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Năm kinh nghiệm</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">1000+</div>
+          <div class="stat-label">Comtor đọc mỗi tháng</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Girl image -->
+    <div class="hero-img-wrap">
+      <!--
+        ╔══════════════════════════════════════════════════════════╗
+        ║  IMAGE SLOT: Hero – Cô gái tại bàn làm việc             ║
+        ╠══════════════════════════════════════════════════════════╣
+        ║  Thay thẻ img-ph bằng <img src="..."> sau khi có ảnh   ║
+        ║  Aspect ratio: portrait (3:4)                            ║
+        ╠══════════════════════════════════════════════════════════╣
+        ║  PROMPT:                                                 ║
+        ║  A young East Asian professional woman, late 20s, dark  ║
+        ║  shoulder-length hair, wearing a light cream blouse,    ║
+        ║  sitting at a modern minimalist desk with a laptop and  ║
+        ║  extra monitor showing code, looking forward with a     ║
+        ║  confident, warm smile. Soft morning window light,      ║
+        ║  small potted plant on desk. Clean, professional semi-  ║
+        ║  realistic digital illustration, muted warm palette,    ║
+        ║  white/beige background. Portrait composition 3:4.      ║
+        ╚══════════════════════════════════════════════════════════╝
+      -->
+      <img src="images/hero.png" alt="Tiếng Nhật Muôn Màu" style="width:100%;border-radius:var(--r-xl);box-shadow:var(--sh-xl);display:block;">
+
+      <!-- Floating badge -->
+      <div class="hero-badge">
+        <span class="hero-badge-icon">✨</span>
+        <div>
+          <div>Từ Comtor không có nền tảng kỹ thuật</div>
+          <div class="hero-badge-sub">đến người hiểu được cả business lẫn technical</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PAIN POINTS
+════════════════════════════════════════════ -->
+<section class="pain">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="tag">Bạn có đang gặp phải?</div>
+      <h2>Những tình huống quen thuộc<br>mà không ai nói thẳng</h2>
+      <p>Nếu bạn đang là IT Comtor, những điều dưới đây có lẽ rất quen.</p>
+    </div>
+
+    <div class="pain-grid">
+
+      <div class="pain-card fade-up delay-1">
+        <div class="pain-card-icon" style="background:rgba(37,99,235,.12);">💭</div>
+        <div class="pain-card-body">
+          <h3>Nghe meeting nhưng không visualize được hệ thống</h3>
+          <p>Dev nói về flow, API, database nhưng trong đầu bạn là một mớ hỗn độn không có hình ảnh cụ thể nào.</p>
+        </div>
+      </div>
+
+      <div class="pain-card fade-up delay-2">
+        <div class="pain-card-icon" style="background:rgba(124,58,237,.12);">📚</div>
+        <div class="pain-card-body">
+          <h3>Biết thuật ngữ nhưng không hiểu bản chất</h3>
+          <p>Cache, load balancer, CI/CD — bạn nghe hàng ngày, biết dịch ra tiếng Việt, nhưng không giải thích được tại sao cần nó.</p>
+        </div>
+      </div>
+
+      <div class="pain-card fade-up delay-3">
+        <div class="pain-card-icon" style="background:rgba(236,72,153,.1);">😰</div>
+        <div class="pain-card-body">
+          <h3>Sợ buổi trao đổi về infra hoặc architecture</h3>
+          <p>Team dev hỏi ý kiến về hệ thống, bạn không dám lên tiếng vì sợ nói sai hoặc lộ ra mình không hiểu.</p>
+        </div>
+      </div>
+
+      <div class="pain-card fade-up delay-4">
+        <div class="pain-card-icon" style="background:rgba(14,165,233,.1);">🔗</div>
+        <div class="pain-card-body">
+          <h3>Cảm thấy "khoảng cách" với dev và team kỹ thuật</h3>
+          <p>Dù làm việc cùng nhau mỗi ngày, bạn vẫn có cảm giác đang đứng ngoài một vòng tròn mà mình chưa được vào.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pain-footer fade-up">
+      <p>Mình đã từng trải qua <strong>tất cả những điều trên</strong>.
+      Và website này được tạo ra chính xác để giúp bạn vượt qua chúng — từng bước một.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STORY
+════════════════════════════════════════════ -->
+<section class="story">
+  <div class="container">
+
+    <!-- Girl image: reflective, café -->
+    <div class="story-img-wrap fade-up">
+      <!--
+        ╔══════════════════════════════════════════════════════════╗
+        ║  IMAGE SLOT: Story – Cô gái trầm tư, nhìn lại hành trình║
+        ╠══════════════════════════════════════════════════════════╣
+        ║  PROMPT:                                                 ║
+        ║  Same young East Asian woman (dark shoulder-length hair, ║
+        ║  smart casual), sitting in a cozy bright café, open     ║
+        ║  notebook and coffee cup on table, gazing thoughtfully  ║
+        ║  out a large window with soft afternoon sunlight, slight ║
+        ║  nostalgic smile. Warm golden tones, bokeh background.  ║
+        ║  Semi-realistic digital illustration. Portrait 3:4.     ║
+        ╚══════════════════════════════════════════════════════════╝
+      -->
+      <img src="images/story .png" alt="Câu chuyện của mình" style="width:100%;border-radius:var(--r-lg);display:block;">
+    </div>
+
+    <!-- Story content -->
+    <div class="story-content fade-up">
+      <div class="tag violet">Câu chuyện của mình</div>
+      <h2>Không xuất phát từ kỹ thuật —<br>nhưng học được cách <span class="grad-text">hiểu hệ thống</span></h2>
+      <p>
+        Phần lớn kiến thức về system, development flow, AWS hay architecture đều là
+        quá trình tự học, tự mò mẫm và từng bước kết nối các mảnh kiến thức lại với nhau
+        qua nhiều năm làm dự án thực tế.
+      </p>
+
+      <div class="journey-timeline">
+        <div class="journey-step">
+          <div class="journey-dot d1">01</div>
+          <div class="journey-step-body">
+            <h4>IT Comtor — Biên phiên dịch dự án IT Nhật</h4>
+            <p>Bắt đầu từ vai trò dịch thuật. Biết tiếng Nhật nhưng không hiểu bản chất kỹ thuật. Cảm giác đứng ngoài cuộc chơi.</p>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-dot d2">02</div>
+          <div class="journey-step-body">
+            <h4>BrSE — Cầu nối kỹ thuật & business</h4>
+            <p>Bắt đầu tự học system, viết tài liệu kỹ thuật, đọc code và tham gia design review. Khoảng cách với dev thu hẹp dần.</p>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-dot d3">03</div>
+          <div class="journey-step-body">
+            <h4>PM — Quản lý dự án với tư duy kỹ thuật</h4>
+            <p>Thấu hiểu cả phía business lẫn technical. Khả năng giao tiếp, estimate và ra quyết định tốt hơn nhờ nền tảng đã xây.</p>
+          </div>
+        </div>
+      </div>
+
+      <blockquote class="story-quote">
+        "Điều giúp một người level up không chỉ là tiếng Nhật hay kinh nghiệm dịch,
+        mà là khả năng hiểu hệ thống và giao tiếp được với cả business lẫn technical team."
+      </blockquote>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CONTENT AREAS
+════════════════════════════════════════════ -->
+<section class="areas">
+  <div class="container">
+
+    <div class="section-header fade-up">
+      <div class="tag">Nội dung</div>
+      <h2>Những gì bạn sẽ tìm thấy ở đây</h2>
+      <p>Kiến thức được hệ thống hóa theo từng chủ đề, từ nền tảng đến thực chiến.</p>
+    </div>
+
+    <!-- Row 1: 3 cards -->
+    <div class="areas-grid-wrap fade-up">
+      <div class="area-card">
+        <div class="area-card-icon" style="background:#EFF6FF;">🖥️</div>
+        <h3>IT Basics</h3>
+        <p>Kiến thức nền tảng IT cho người không có background kỹ thuật. Hiểu từ HTTP, database đến hệ thống thực sự hoạt động như thế nào.</p>
+        <a href="/blog/it-basics" class="area-card-link">Xem bài viết</a>
+      </div>
+      <div class="area-card">
+        <div class="area-card-icon" style="background:#F0FDF4;">☁️</div>
+        <h3>AWS / Infra</h3>
+        <p>Cloud và infrastructure từ góc nhìn của người dùng thực tế — không phải exam certification, mà là hiểu tại sao team dùng EC2 hay S3.</p>
+        <a href="/blog/aws-infra" class="area-card-link">Xem bài viết</a>
+      </div>
+      <div class="area-card">
+        <div class="area-card-icon" style="background:#FFF7ED;">🔄</div>
+        <h3>Dev Flow</h3>
+        <p>Quy trình phát triển phần mềm: từ sprint planning, git workflow, code review đến deploy — để bạn tham gia discussion một cách tự tin.</p>
+        <a href="/blog/dev-flow" class="area-card-link">Xem bài viết</a>
+      </div>
+    </div>
+
+    <!-- Row 2: 2 cards centered -->
+    <div class="areas-row2 fade-up delay-2" style="max-width: 100%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 1.25rem;">
+      <div class="area-card">
+        <div class="area-card-icon" style="background:#F5F3FF;">🌐</div>
+        <h3>BrSE Skill</h3>
+        <p>Kỹ năng cầu nối kỹ thuật — cách đọc spec, viết tài liệu, đặt câu hỏi đúng và bridge thông tin giữa khách hàng Nhật và team dev.</p>
+        <a href="/blog/brse-skill" class="area-card-link">Xem bài viết</a>
+      </div>
+      <div class="area-card">
+        <div class="area-card-icon" style="background:#FFF1F2;">📋</div>
+        <h3>Case Study</h3>
+        <p>Góc nhìn từ dự án thực tế — những quyết định architecture, incident xảy ra và cách team xử lý, được kể lại theo cách dễ hiểu nhất.</p>
+        <a href="/blog/case-study" class="area-card-link">Xem bài viết</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     LATEST POSTS
+════════════════════════════════════════════ -->
+<section class="posts">
+  <div class="container">
+
+    <div class="section-header fade-up" style="display:flex;align-items:center;justify-content:space-between;text-align:left;margin-bottom:0;">
+      <div>
+        <div class="tag" style="margin-bottom:.75rem;">Bài viết mới nhất</div>
+        <h2 style="margin:0;">Bắt đầu từ đây</h2>
+      </div>
+      <a href="/blog" class="btn btn-outline" style="flex-shrink:0;">Xem tất cả →</a>
+    </div>
+
+    <div class="posts-grid" style="margin-top:2.5rem;">
+
+      <!-- Post 1 -->
+      <article class="post-card fade-up delay-1">
+        <div class="post-card-thumb" style="background:linear-gradient(135deg,#EFF6FF,#F0FDF4);">
+          🖥️
+          <span class="post-card-thumb-label" style="background:var(--blue);">IT Basics</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-meta">
+            <span>📅 20 tháng 5, 2026</span>
+            <span>⏱ 8 phút đọc</span>
+          </div>
+          <h3>AWS Là Gì? Giải Thích Từ A–Z Cho Người Mới Hoàn Toàn</h3>
+          <p>Bạn nghe team dev nhắc đến S3, EC2, Lambda mỗi ngày nhưng không biết chúng thực sự là gì? Bài này giải thích theo cách bạn sẽ "à ra thế" ngay lần đầu đọc.</p>
+          <div class="post-card-footer">
+            <a href="#" class="post-read-more">Đọc bài</a>
+            <span class="post-time">1.2k lượt đọc</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="post-card fade-up delay-2">
+        <div class="post-card-thumb" style="background:linear-gradient(135deg,#F5F3FF,#FFF1F2);">
+          🌐
+          <span class="post-card-thumb-label" style="background:var(--violet);">BrSE Skill</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-meta">
+            <span>📅 14 tháng 5, 2026</span>
+            <span>⏱ 10 phút đọc</span>
+          </div>
+          <h3>Cách Đọc Hiểu System Architecture Diagram Không Cần Biết Code</h3>
+          <p>Lần đầu nhìn vào diagram với đủ loại hình vuông, mũi tên và chữ viết tắt? Đây là framework mình dùng để đọc bất kỳ architecture nào trong 5 phút.</p>
+          <div class="post-card-footer">
+            <a href="#" class="post-read-more">Đọc bài</a>
+            <span class="post-time">980 lượt đọc</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Post 3 -->
+      <article class="post-card fade-up delay-3">
+        <div class="post-card-thumb" style="background:linear-gradient(135deg,#FFF7ED,#FFFBEB);">
+          🔄
+          <span class="post-card-thumb-label" style="background:#C2410C;">Dev Flow</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-meta">
+            <span>📅 8 tháng 5, 2026</span>
+            <span>⏱ 12 phút đọc</span>
+          </div>
+          <h3>Flow Xử Lý Request Từ Browser Đến Database: Bức Tranh Toàn Cảnh</h3>
+          <p>Khi bạn bấm nút "Submit" trên web app, điều gì thực sự xảy ra? Bài viết này sẽ giúp bạn hình dung rõ ràng toàn bộ hành trình của một request.</p>
+          <div class="post-card-footer">
+            <a href="#" class="post-read-more">Đọc bài</a>
+            <span class="post-time">1.5k lượt đọc</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     EBOOK CTA
+════════════════════════════════════════════ -->
+<section class="ebook">
+  <div class="container">
+    <div class="ebook-banner fade-up">
+
+      <div class="ebook-content">
+        <div class="tag violet">Ebook miễn phí</div>
+        <h2>IT Cơ Bản Cho Comtor:<br>Từ Zero Đến Tự Tin</h2>
+        <p>
+          Hệ thống hóa những kiến thức IT thiết yếu nhất mà một IT Comtor cần biết
+          để tự tin trong mọi buổi meeting kỹ thuật — được trình bày theo cách không cần background lập trình.
+        </p>
+
+        <ul class="ebook-features">
+          <li class="ebook-feature"><span class="ebook-feature-icon">✓</span> 50+ trang nội dung được chắt lọc từ thực tế</li>
+          <li class="ebook-feature"><span class="ebook-feature-icon">✓</span> Diagram và visual cho từng khái niệm</li>
+          <li class="ebook-feature"><span class="ebook-feature-icon">✓</span> Checklist "câu hỏi nên hỏi trong meeting kỹ thuật"</li>
+          <li class="ebook-feature"><span class="ebook-feature-icon">✓</span> Case study từ dự án IT Nhật thực tế</li>
+        </ul>
+
+        <div class="ebook-actions">
+          <a href="/ebook" class="btn btn-ghost">📥 Tải miễn phí ngay</a>
+          <a href="/about" class="btn" style="color:var(--ink-light);background:transparent;border:1.5px solid rgba(255,255,255,.15);">Tìm hiểu thêm →</a>
+        </div>
+      </div>
+
+      <!-- Girl image: holding ebook/tablet -->
+      <div class="ebook-img">
+        <!--
+          ╔══════════════════════════════════════════════════════════╗
+          ║  IMAGE SLOT: Ebook – Cô gái cầm tablet đọc ebook        ║
+          ╠══════════════════════════════════════════════════════════╣
+          ║  PROMPT:                                                 ║
+          ║  Same young East Asian woman (dark shoulder-length hair, ║
+          ║  smart casual), holding a glowing tablet displaying an  ║
+          ║  ebook cover with blue/purple gradient, warm genuine    ║
+          ║  smile looking slightly toward viewer. Bright airy      ║
+          ║  workspace background, natural light. Semi-realistic    ║
+          ║  digital illustration, slight bottom crop, fills frame. ║
+          ╚══════════════════════════════════════════════════════════╝
+        -->
+        <img src="images/ebookCTA.png" alt="Ebook CTA" style="width:100%;height:100%;min-height:380px;object-fit:cover;object-position:top;display:block;">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     NEWSLETTER
+════════════════════════════════════════════ -->
+<section class="newsletter">
+  <div class="container">
+    <h3>Nhận bài viết mới <span class="grad-text">hàng tuần</span></h3>
+    <p>Không spam. Chỉ những nội dung thực sự hữu ích cho hành trình của bạn.</p>
+    <form class="newsletter-form" onsubmit="return false;">
+      <input type="email" placeholder="your@email.com" />
+      <button type="submit" class="btn btn-primary" style="white-space:nowrap;">Đăng ký →</button>
+    </form>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:.875rem;">
+          <img src="images/logo.png" alt="Tiếng Nhật Muôn Màu" style="height:36px;width:auto;display:block;">
+          <span style="color:#fff;font-weight:800;">Tiếng Nhật Muôn Màu</span>
+        </div>
+        <p>Chia sẻ kiến thức và hành trình phát triển trong ngành IT — từ góc nhìn của người đã đi qua IT Comtor → BrSE → PM.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/tiengnhatmuonmau" target="_blank" rel="noopener" title="Facebook">f</a>
+          <a href="https://www.youtube.com/@tiengnhatmuonmautiengnhati623" target="_blank" rel="noopener" title="YouTube">▶</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Blog</h4>
+        <ul>
+          <li><a href="/blog/it-basics">IT Basics</a></li>
+          <li><a href="/blog/aws-infra">AWS / Infra</a></li>
+          <li><a href="/blog/dev-flow">Dev Flow</a></li>
+          <li><a href="/blog/brse-skill">BrSE Skill</a></li>
+          <li><a href="/blog/case-study">Case Study</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/ebook">Ebook miễn phí</a></li>
+          <li><a href="/glossary">Từ điển IT</a></li>
+          <li><a href="/templates">Templates</a></li>
+          <li><a href="/newsletter">Newsletter</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Liên hệ</h4>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="mailto:hoa.j3k45@gmail.com">hoa.j3k45@gmail.com</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Tiếng Nhật Muôn Màu. Tất cả quyền được bảo lưu.</span>
+      <span>Made with ♡ for IT Comtors everywhere</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════ -->
+<script>
+  // ── Sticky nav shadow
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ── Scroll fade-in
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
